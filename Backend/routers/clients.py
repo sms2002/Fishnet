@@ -75,7 +75,7 @@ async def search_auto(query: str, user: dict = Depends(get_current_user), db: Se
 
     req_items = []
     for x in items:
-        if query in x["name"]:
+        if query in x["name"].lower():
             req_items.append(x)
     return req_items
 
