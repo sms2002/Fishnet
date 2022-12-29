@@ -13,7 +13,7 @@ export default function Card() {
 			<h4 className='card-title'>Mackerel</h4>
 			<p className='card-para'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
 			<div class="product-bottom-details">
-				<div class="product-price"><small>$96.00</small>$230.99</div>
+				<div class="product-price">$230.99</div>
 			</div>
 		</div>
 	</div>
