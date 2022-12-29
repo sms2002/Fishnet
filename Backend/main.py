@@ -3,15 +3,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import engine
 
 import models
-from routers import auth, todos
-from companyapis import companyapis
+from routers import auth, products
 
 
 app = FastAPI()
 app.include_router(auth.router)
+app.include_router(products.router)
 
 origins = [
-    
+    "http://127.0.0.1:5500",
+    "http://localhost:3000",
 ]
 
 app.add_middleware(

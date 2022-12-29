@@ -40,6 +40,7 @@ class CreateUser(BaseModel):
     firstname: str
     lastname: str
     password: str
+    type: int
 
 class LoginUser(BaseModel):
     username: str
@@ -72,10 +73,11 @@ def authenticate_user(username: str, password: str, db):
         return user
     return False
 
-def create_access_token(username: str, user_id: int, expires_delta: Optional[timedelta] = None):
+def create_access_token(username: str, user_id: int, user_type: int, expires_delta: Optional[timedelta] = None):
     encode = {
         "sub": username,
-        "id": user_id
+        "id": user_id,
+        "type": user_type
     }
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
@@ -91,7 +93,7 @@ async def login(login_user: LoginUser, db: Session = Depends(get_db)):
     user = authenticate_user(login_user.username, login_user.password, db)
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="validation failure")
-    token = create_access_token(user.username, user.id, expires_delta=timedelta(minutes=30))
+    token = create_access_token(user.username, user.id, user.type, expires_delta=timedelta(minutes=30))
     return {
         'token': token
     }
@@ -104,7 +106,7 @@ async def create_new_user(create_user: CreateUser, db: Session = Depends(get_db)
     create_user_model.firstname = create_user.firstname
     create_user_model.lastname = create_user.lastname
     create_user_model.hashed_password = get_password_hash(create_user.password)
-    create_user_model.is_active = True
+    create_user_model.type = create_user.type
 
     db.add(create_user_model)
     db.commit()
@@ -135,13 +137,15 @@ async def get_current_user(token: str = Depends(outh2_bearer)):
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORIHTM])
         username: str = payload.get("sub")
         user_id: int = payload.get("id")
+        user_type: int = payload.get("type")
 
         if username is None or user_id is None:
             raise get_user_exception()
         
         return {
             "username": username,
-            "user_id": user_id
+            "user_id": user_id,
+            "type": user_type
         }
     except:
         raise get_user_exception()
