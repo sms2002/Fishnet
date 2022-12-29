@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/navbar';
 import Signin from './pages/signin/Signin';
 import Signup from './pages/signup.js/Signup';
 import CardDisplay from './pages/carddisplay';
+import Userlanding from './pages/userlanding/userlanding';
 import FishermanCard from './pages/FishermanLanding/FishermanCard';
 import Product from './pages/AddProduct/Product';
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/signin' element={<Signin />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/carddisplay' element={<CardDisplay />} />
+          <Route path='/userlanding' element={<Userlanding/>}/>
           <Route path='/FishermanLandingPage' element={<FishermanCard />} />
           <Route path='/Product' element={<Product />} />
         </Routes>

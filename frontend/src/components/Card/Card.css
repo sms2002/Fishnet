@@ -3,6 +3,7 @@
   /***********************CARD CSS ************/
   .product-card {
     width: 380px;
+    height: auto;
     position: relative;
     box-shadow: 0 2px 7px #dfdfdf;
     margin: 50px auto;
@@ -28,7 +29,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 300px;
+    height: 120px;
+    border-radius: 2rem;
     padding: 50px;
     background: #BFEAF5;
 }
@@ -76,6 +78,7 @@
     overflow: hidden;
     border-top: 1px solid #ffff;
     padding-top: 20px;
+    margin-bottom: 10px;
 }
 
 .product-bottom-details div {
@@ -117,4 +120,15 @@
 {
     color:#fff;
     font-size: 2rem;
+}
+
+.buynowbtn{
+    font-size: large;
+    width: 30%;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.buynowbtn:hover{
+    background-color: #BFEAF5;
 }
