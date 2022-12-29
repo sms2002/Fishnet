@@ -49,42 +49,42 @@ const Signup = () => {
 
   return (
     <div>
-      <div class="login-signup l-attop" id="signup">
-  <div class="login-signup-title">
+      <div className="login-signup l-attop" id="signup">
+  <div className="login-signup-title">
     SIGN UP
   </div>
-  <div class="login-signup-content">
-    <div class="input-name">
+  <div className="login-signup-content">
+    <div className="input-name">
       <h2>Username</h2>
 
 
     </div>
-    <input type="text" onChange={addData} name="username" value={logdata.username} class="field-input" />
-    <div class="input-name input-margin">
+    <input type="text" onChange={addData} name="username" value={logdata.username} className="field-input" />
+    <div className="input-name input-margin">
       <h2>E-Mail</h2>
 
     </div>
-    <input type="text" onChange={addData} name="email" value={logdata.email} class="field-input" />
+    <input type="text" onChange={addData} name="email" value={logdata.email} className="field-input" />
 
-    <div class="input-name input-margin">
+    <div className="input-name input-margin">
       <h2>First Name</h2>
 
     </div>
-    <input type="text" onChange={addData} name="firstname" value={logdata.firstname} class="field-input" />
+    <input type="text" onChange={addData} name="firstname" value={logdata.firstname} className="field-input" />
 
-    <div class="input-name input-margin">
+    <div className="input-name input-margin">
       <h2>Last Name</h2>
 
     </div>
-    <input type="text" onChange={addData} name="lastname" value={logdata.lastname} class="field-input" />
+    <input type="text" onChange={addData} name="lastname" value={logdata.lastname} className="field-input" />
 
-    <div class="input-name input-margin">
+    <div className="input-name input-margin">
       <h2>Password</h2>
 
     </div>
-    <input type="text" onChange={addData} name="password" value={logdata.password} class="field-input" />
+    <input type="text" onChange={addData} name="password" value={logdata.password} className="field-input" />
 
-    <button class="submit-btn" onClick={()=>{
+    <button className="submit-btn" onClick={()=>{
         console.log('signup')
         signup()}}>
               Enter

@@ -48,26 +48,26 @@ const Signin = () => {
   return (
     
     <div>
-    <div class="login-signup l-attop" id="signup">
-  <div class="login-signup-title">
+    <div className="login-signup l-attop" id="signup">
+  <div className="login-signup-title">
     LOG IN
   </div>
-  <div class="login-signup-content">
-    <div class="input-name">
+  <div className="login-signup-content">
+    <div className="input-name">
       <h2>Username</h2>
 
     </div>
-    <input type="text" name="username" onChange={addData} value={logdata.username} class="field-input" />
-    <div class="input-name input-margin">
+    <input type="text" name="username" onChange={addData} value={logdata.username} className="field-input" />
+    <div className="input-name input-margin">
       <h2>Password</h2>
 
     </div>
-    <input type="text" name="password" onChange={addData} value={logdata.password} class="field-input" />
-    <div class="input-r">
+    <input type="text" name="password" onChange={addData} value={logdata.password} className="field-input" />
+    <div className="input-r">
 
 
     </div>
-    <button class="submit-btn" onClick={()=>{
+    <button className="submit-btn" onClick={()=>{
         login();
     }}>
           Enter
