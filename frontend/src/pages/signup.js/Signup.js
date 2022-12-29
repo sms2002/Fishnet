@@ -3,8 +3,14 @@ import axios from'axios';
 
 import './signup.css';
 
+
+
 const baseurl = 'http://127.0.0.1:8000'
 const Signup = () => {
+
+
+
+  const [user,setUser]=useState(0)
 
     const [logdata,setData] = useState({
         username:'',
@@ -33,7 +39,8 @@ const Signup = () => {
                 email:logdata.email,
                 firstname:logdata.firstname,
                 lastname:logdata.lastname,
-                password:logdata.password
+                password:logdata.password,
+                type: user
             }).then((response)=>{
                 if(response.data.status==200){
                     window.location.href = '/signin'
@@ -83,9 +90,17 @@ const Signup = () => {
 
     </div>
     <input type="text" onChange={addData} name="password" value={logdata.password} className="field-input" />
+    <input type="radio" id="type" name="fav_language" onChange={()=>{
+    setUser(0)}} value="Fisherman" defaultChecked/>
+<label for="html">Fisherman</label><br></br>
+<input type="radio" id="type" name="fav_language" onChange={()=>{
+    setUser(1)}} 
+    value="User"/>
+<label for="html">User</label><br></br>
 
     <button className="submit-btn" onClick={()=>{
         console.log('signup')
+        console.log(user)
         signup()}}>
               Enter
             </button>
