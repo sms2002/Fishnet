@@ -45,12 +45,12 @@ class Product(BaseModel):
 
 
 @router.get('/')
-async def read_all(db: Session = Depends(get_db)):
+async def read_all_products(db: Session = Depends(get_db)):
     return db.query(models.Products).all()
 
 
 @router.get('/user')
-async def read_all_by_user(user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
+async def read_all_products_by_user(user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
     if user is None:
         raise get_user_exception()  
 
@@ -81,7 +81,7 @@ async def create_product(product: Product, user: dict = Depends(get_current_user
 
 
 @router.get('/{product_id}')
-async def read_todo(product_id: int, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
+async def read_product(product_id: int, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
     if user is None:
         raise get_user_exception()
     
@@ -95,7 +95,7 @@ async def read_todo(product_id: int, user: dict = Depends(get_current_user), db:
 
 
 @router.put('/{product_id}')
-async def update_todo(product_id: int, product: Product, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
+async def update_product(product_id: int, product: Product, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
     if user is None:
         raise get_user_exception()
     
@@ -125,7 +125,7 @@ async def update_todo(product_id: int, product: Product, user: dict = Depends(ge
 
 
 @router.delete('/{product_id}')
-async def delete_todo(product_id: int, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
+async def delete_product(product_id: int, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
     if user is None:
         raise get_user_exception()
     
