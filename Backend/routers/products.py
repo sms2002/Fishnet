@@ -140,6 +140,49 @@ async def delete_product(product_id: int, user: dict = Depends(get_current_user)
     raise HTTPException_product_notfound()
 
 
+@router.put('/universal/{product_id}')
+async def universal_update_product(product_id: int, qty: int, db: Session = Depends(get_db)):
+    
+    product_model = db.query(models.Products).filter(models.Products.id == product_id)\
+        .first()
+    
+    if product_id is not None:
+        # product_model.name = product_model.name
+        # product_model.description = product_model.description
+        # product_model.cost = product_model.cost
+        product_model.qty = qty
+        product_model.time = str(datetime.now())
+        # product_model.contact = product_model.contact
+        # product_model.location = product_model.location
+        # product_model.owner_id = product_model.owner_id
+
+        db.add(product_model)
+        db.commit()
+
+        return {
+            'status': 200,
+            'detail': 'updated'
+        }
+    
+    raise HTTPException_product_notfound()
+
+
+@router.delete('/universal/{product_id}')
+async def universal_delete_product(product_id: int, db: Session = Depends(get_db)):
+    
+    product_model = db.query(models.Products).filter(models.Products.id == product_id)\
+        .first()
+    
+    if product_model is not None:
+        db.query(models.Products).filter(models.Products.id == product_id).delete()
+        db.commit()
+        
+        return {
+            'status': 201,
+            'detail': 'deleted'
+        }
+    
+    raise HTTPException_product_notfound()
 
 
 def HTTPException_product_notfound():

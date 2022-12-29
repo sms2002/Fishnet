@@ -93,7 +93,7 @@ async def login(login_user: LoginUser, db: Session = Depends(get_db)):
     user = authenticate_user(login_user.username, login_user.password, db)
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="validation failure")
-    token = create_access_token(user.username, user.id, user.type, expires_delta=timedelta(minutes=30))
+    token = create_access_token(user.username, user.id, user.type, expires_delta=timedelta(hours=1))
     return {
         'token': token,
         'type': user.type

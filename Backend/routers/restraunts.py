@@ -42,82 +42,87 @@ class bulkRequest(BaseModel):
     qty: int = Field(ge=1)
 
 
-# @router.get('/bulkOrder')
-# async def get_items(name: str, qty: int, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
-#     if user is None:
-#         raise get_user_exception()  
+@router.get('/bulkOrder')
+async def get_items(name: str, qty: int, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
+    if user is None:
+        raise get_user_exception()  
 
-#     name_filter = db.query(models.Products).filter(models.Products.name == name).all()
+    name_filter = db.query(models.Products).filter(models.Products.name == name).all()
     
 
-#     params = ['id', 'name', 'description', 'cost', 'qty', 'time', 'contact', 'location', 'owner_id']
+    params = ['id', 'name', 'description', 'cost', 'qty', 'time', 'contact', 'location', 'owner_id']
 
-#     #df = pd.DataFrame(columns=params)
+    #df = pd.DataFrame(columns=params)
 
-#     id=[]
-#     name=[]
-#     description=[]
-#     cost=[]
-#     qty=[]
-#     time=[]
-#     contact=[]
-#     location=[]
-#     owner_id=[]
-#     #print(df)
-#     #print("hry")
-#     for x in name_filter:
-#         id.append(x.id)
-#         name.append(x.name)
-#         description.append(x.description)
-#         cost.append(x.cost)
-#         qty.append(x.qty)
-#         time.append(x.time)
-#         contact.append(x.contact)
-#         location.append(x.location)
-#         owner_id.append(x.owner_id)
+    id=[]
+    name=[]
+    description=[]
+    cost=[]
+    qty=[]
+    time=[]
+    contact=[]
+    location=[]
+    owner_id=[]
+    #print(df)
+    #print("hry")
+    for x in name_filter:
+        id.append(x.id)
+        name.append(x.name)
+        description.append(x.description)
+        cost.append(x.cost)
+        qty.append(x.qty)
+        time.append(x.time)
+        contact.append(x.contact)
+        location.append(x.location)
+        owner_id.append(x.owner_id)
 
-#         #temp_list = x.id, x.name, x.description, x.cost, x.qty, x.time,x.contact x.location, x.owner_id
-#         #print(temp_list)
-#     #print(name)    
-#     df={"id":id,"name":name,"description":description,"cost":cost,"qty":qty,"time":time,"contact":contact,"location":location,"owner_id":owner_id}    
-#     df = pd.DataFrame(df)
-#         #df = pd.concat([df,df_temp], axis=0, ignore_index=True)
-#     print("hi")
-#     print(df)
-#     final_df = df.sort_values(by=['cost'], ascending=True)
-#     print("hey")
-#     s=0
-#     notify_ownerids=[]
-#     notify_names=[]
-#     notify_costs=[]
-#     notify_qtys=[]
-#     for i in range(len(final_df["qty"])):
-#        s=s+final_df["qty"][i]
-#        notify_ownerids.append(final_df["owner_id"][i])
-#        notify_names.append(final_df["name"][i])
-#        notify_costs.append(final_df["cost"][i])
-#        notify_qtys.append(final_df["qty"][i])
-#        if(s>=4):
-#         break
-#     dfnotify={"notified_ownerid":notify_ownerids,"name":notify_names,"cost":notify_costs,"qty":notify_qtys}
-#     dfnotified=pd.DataFrame(dfnotify)
-#     print("hello")
-#     print(dfnotified)        
+        #temp_list = x.id, x.name, x.description, x.cost, x.qty, x.time,x.contact x.location, x.owner_id
+        #print(temp_list)
+    #print(name)    
+    df={"id":id,"name":name,"description":description,"cost":cost,"qty":qty,"time":time,"contact":contact,"location":location,"owner_id":owner_id}    
+    df = pd.DataFrame(df)
+        #df = pd.concat([df,df_temp], axis=0, ignore_index=True)
+    print("hi")
+    print(df)
+    final_df = df.sort_values(by=['cost'], ascending=True)
+    json_index = final_df.to_json(orient ='index')
+    json_values = final_df.to_json(orient ='values')
+    print(json_values)
+    # print("hey")
+    # s=0
+    # notify_ownerids=[]
+    # notify_names=[]
+    # notify_costs=[]
+    # notify_qtys=[]
+    # for i in range(len(final_df["qty"])):
+    #    s=s+final_df["qty"][i]
+    #    notify_ownerids.append(final_df["owner_id"][i])
+    #    notify_names.append(final_df["name"][i])
+    #    notify_costs.append(final_df["cost"][i])
+    #    notify_qtys.append(final_df["qty"][i])
+    #    if(s>=4):
+    #     break
+    # dfnotify={"notified_ownerid":notify_ownerids,"name":notify_names,"cost":notify_costs,"qty":notify_qtys}
+    # dfnotified=pd.DataFrame(dfnotify)
+    # print("hello")
+    # print(dfnotified)        
 
 
-#     # df = pd.DataFrame()
-#     # for x in name_filter:
-#     #     temp_list = x.id, x.name, x.description, x.cost, x.qty, x.time, x.location, x.owner_id
-#     #     print(temp_list)
-#     #     df_temp = pd.DataFrame(temp_list)
-#     #     df = pd.concat([df,df_temp], axis=0, ignore_index=True)
+    # # df = pd.DataFrame()
+    # # for x in name_filter:
+    # #     temp_list = x.id, x.name, x.description, x.cost, x.qty, x.time, x.location, x.owner_id
+    # #     print(temp_list)
+    # #     df_temp = pd.DataFrame(temp_list)
+    # #     df = pd.concat([df,df_temp], axis=0, ignore_index=True)
     
-#     # for x in df:
-#     #     print(x)
-#     # for x in list1:
-#     #     if x.qty 
-#     x=dfnotify["notified_ownerid"][0]
-#     return x
+    # # for x in df:
+    # #     print(x)
+    # # for x in list1:
+    # #     if x.qty 
+    # x=dfnotify["notified_ownerid"][0]
+    # return x
+
+    return ""
 
 # @router.get('/user')
 # async def read_all_products_by_user(user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
