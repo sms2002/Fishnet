@@ -9,10 +9,13 @@ const Navbar = () => {
       <div className="nav">
         <header>
           <div className='flex-nav'>
-            <h1 className='nav-text'>Fishnet</h1>
+            <h1 className='nav-text'>FISHNET</h1>
+            <div className='button_flex'>
+            <button className="button style_1"onClick={() => { window.location.href = '/predict'; }}>Predict</button>
             <button class="button style_1"  onClick={() => { localStorage.removeItem('token'); window.location.reload(); }}>
               Logout
             </button>
+            </div>
           </div>
         </header>
       </div>
@@ -48,7 +51,7 @@ const Navbar = () => {
       <div className="nav">
         <header>
           <div className='flex-nav'>
-            <h1 className='nav-text'>Fishnet</h1>
+            <h1 className='nav-text'>FISHNET</h1>
             <div className='button_flex'>
             <button className="button style_1"onClick={() => { window.location.href = '/signin'; }}>SignIn</button>
             <button className="button style_1" onClick={() => { window.location.href = '/signup'; }}>SignUp </button>

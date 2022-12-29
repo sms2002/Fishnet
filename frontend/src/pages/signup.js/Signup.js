@@ -90,13 +90,17 @@ const Signup = () => {
 
     </div>
     <input type="text" onChange={addData} name="password" value={logdata.password} className="field-input" />
-    <input type="radio" id="type" name="fav_language" onChange={()=>{
-    setUser(0)}} value="Fisherman" defaultChecked/>
-<label for="html">Fisherman</label><br></br>
-<input type="radio" id="type" name="fav_language" onChange={()=>{
+    <div className='flex_radio'>
+    <span><label for="html">Fisherman</label>
+    <input className='radiobtn' type="radio" id="type" name="fav_language" onChange={()=>{
+    setUser(0)}} value="Fisherman" defaultChecked/></span>
+<span><label for="html">User</label>
+<input className='radiobtn' type="radio" id="type" name="fav_language" onChange={()=>{
     setUser(1)}} 
-    value="User"/>
-<label for="html">User</label><br></br>
+    value="User"/></span>
+    
+    </div>
+
 
     <button className="submit-btn" onClick={()=>{
         console.log('signup')

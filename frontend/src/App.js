@@ -8,6 +8,8 @@ import Userlanding from './pages/userlanding/userlanding';
 import Product from './pages/AddProduct/Product';
 import FishermanLanding from './pages/FishermanLanding/FishermanLanding';
 import Updateproducts from './pages/Updateproduct/Updateproduct';
+import Family from './pages/Familydata/Family';
+import Predict from './pages/Predict/Predict';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path='/FishermanLanding' element={<FishermanLanding />} />
           <Route path='/Product' element={<Product />} />
           <Route path='/update/:id' element={<Updateproducts />} />
+          <Route path='/familydata' element={<Family />} />
+          <Route path='/predict' element={<Predict />} />
         </Routes>
       </BrowserRouter>
     </div>

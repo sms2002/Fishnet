@@ -239,14 +239,3 @@ section {
   #login {
     transform: translateX(-170px);
   }
- .flex_radio
-  {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
-    font-size: 18px;
-  }
-  #id{
-    margin-top: 12px;
-    margin-left: 4px;
-  }
