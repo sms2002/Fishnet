@@ -3,15 +3,18 @@ import { BrowserRouter,Route,Routes }  from 'react-router-dom';
 import Navbar from './components/Navbar/navbar';
 import Signin from './pages/signin/Signin';
 import Signup from './pages/signup.js/Signup';
+import CardDisplay from './pages/carddisplay';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      
       <BrowserRouter>
+      <Navbar />
         <Routes>
           <Route path='/signin' element={<Signin />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/carddisplay' element={<CardDisplay />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -3,58 +3,64 @@ import './navbar.css';
 
 const Navbar = () => {
 
-    if(localStorage.getItem('token')){
-        return(
-            <div class="black-overlay-container">
-    <div class="container">
-      <nav class="navbar">
-        <div class="navbar-container">
-          <div class="navbar-item navbar-platform">
-            <div class="navbar-link active"></div>
+  if (localStorage.getItem('token')) {
+    return (
+
+      <div className="nav">
+        <header>
+          <div className='flex-nav'>
+            <h1 className='nav-text'>Fishnet</h1>
+            <button class="button style_1"  onClick={() => { localStorage.removeItem('token'); window.location.reload(); }}>
+              Logout
+            </button>
           </div>
+        </header>
+      </div>
+    )
+  }
+
+  else {
+    return (
+
+      // <div className="black-overlay-container">
+      //   <div className="container">
+      //     <nav className="navbar">
+      //       <div className="navbar-container">
+      //         <div className="navbar-item navbar-platform">
+      //           <div className="navbar-link active"></div>
+      //         </div>
 
 
-          <div class="navbar-item navbar-button">
-            <button class="sign-up-button" onClick={()=>{localStorage.removeItem('token'); window.location.reload();}}>Logout</button>
-          </div>
-        </div>
-      </nav>
+      //         <div className="navbar-item navbar-signin">
+      //           <a href='/signin'><div className="navbar-link">Sign in</div></a>
+      //         </div>
 
-        
-    </div>
-  </div>
-        )
-    }
+      //         <div className="navbar-item navbar-button">
+      //           <button className="sign-up-button" onClick={() => { window.location.href = '/signup'; }}>Sign up free</button>
+      //         </div>
+      //       </div>
+      //     </nav>
 
-    else{
-        return (
-        
-            <div class="black-overlay-container">
-              <div class="container">
-                <nav class="navbar">
-                  <div class="navbar-container">
-                    <div class="navbar-item navbar-platform">
-                      <div class="navbar-link active"></div>
-                    </div>
-          
-          
-                    <div class="navbar-item navbar-signin">
-                      <a href='/signin'><div class="navbar-link">Sign in</div></a>
-                    </div>
-          
-                    <div class="navbar-item navbar-button">
-                      <button class="sign-up-button" onClick={()=>{window.location.href='/signup';}}>Sign up free</button>
-                    </div>
-                  </div>
-                </nav>
-          
-                  
-              </div>
+
+      //   </div>
+      // </div>
+      <>
+      <div className="nav">
+        <header>
+          <div className='flex-nav'>
+            <h1 className='nav-text'>Fishnet</h1>
+            <div className='button_flex'>
+            <button className="button style_1"onClick={() => { window.location.href = '/signin'; }}>SignIn</button>
+            <button className="button style_1" onClick={() => { window.location.href = '/signup'; }}>SignUp </button>
             </div>
-                
-            )
-    }
-  
+          </div>
+        </header>
+      </div>
+      </>
+
+    )
+  }
+
 }
 
 export default Navbar
