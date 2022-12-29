@@ -1,0 +1,17 @@
+.center_fam
+{
+    
+    display: flex;
+    margin-left: 10rem;
+    flex-direction: row;
+    position: fixed;
+    flex-wrap: wrap;
+    float: left;
+}
+.family_head
+{
+    margin-top: 2rem;
+     margin-bottom: 2rem;
+    text-align: center;
+    font-size: 5rem
+}

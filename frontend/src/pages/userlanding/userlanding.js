@@ -9,6 +9,7 @@ const baseurl = 'http://127.0.0.1:8000'
 const Userlanding = () => {
 
     const [data,setData] = useState([])
+    const [search,setSearch]=useState('')
 
     useEffect(()=>{
         fetchData();

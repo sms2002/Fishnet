@@ -126,17 +126,18 @@
   }
   .nav-text
   {
+    font-size: 40px;
     color: #fff;
   }
   .button.style_1 {
     background-color: #91D8E4;
-    border: 4px solid #fff;
+    border: 4px solid #91D8E4;
     border-radius: 50px;
     width: 9rem;
-    height: 2rem;
-    color: #fff;
+    height: 3rem;
+    color: #00008B;
     margin-right: 1rem;
-    font-size: 1.35rem;
+    font-size: 2rem;
   }
   .button_flex
   {
