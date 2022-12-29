@@ -5,8 +5,9 @@ import Signin from './pages/signin/Signin';
 import Signup from './pages/signup.js/Signup';
 import CardDisplay from './pages/carddisplay';
 import Userlanding from './pages/userlanding/userlanding';
-import FishermanCard from './pages/FishermanLanding/FishermanCard';
 import Product from './pages/AddProduct/Product';
+import FishermanLanding from './pages/FishermanLanding/FishermanLanding';
+import Updateproducts from './pages/Updateproduct/Updateproduct';
 
 function App() {
   return (
@@ -19,8 +20,9 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/carddisplay' element={<CardDisplay />} />
           <Route path='/userlanding' element={<Userlanding/>}/>
-          <Route path='/FishermanLandingPage' element={<FishermanCard />} />
+          <Route path='/FishermanLanding' element={<FishermanLanding />} />
           <Route path='/Product' element={<Product />} />
+          <Route path='/update/:id' element={<Updateproducts />} />
         </Routes>
       </BrowserRouter>
     </div>

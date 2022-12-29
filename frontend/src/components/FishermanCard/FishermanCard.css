@@ -57,6 +57,7 @@
     color: #363636;
     text-decoration: none;
     transition: 0.3s;
+
 }
 
 .product-details h4 a:hover {
@@ -74,6 +75,7 @@
     overflow: hidden;
     border-top: 1px solid #ffff;
     padding-top: 20px;
+    margin-bottom: 5px;
 }
 
 .product-bottom-details div {
@@ -116,3 +118,57 @@
     color:#fff;
     font-size: 2rem;
 }
+.btn-outline {
+    color: #4fbfa8;
+    background-color: #ffffff;
+    border-color: #4fbfa8;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 25%;
+    margin-right: 2rem;
+    
+  }
+  
+  .btn-outline:hover,
+  .btn-outline:active,
+  .btn-outline:focus,
+  .btn-outline.active {
+    background: #4fbfa8;
+    color: #ffffff;
+    border-color: #4fbfa8;
+    
+  }
+  .btn-outlined {
+    color: red;
+    background-color: #ffffff;
+    border-color: red;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 25%;
+
+  }
+
+  
+  .btn-outlined:hover,
+  .btn-outlined:active,
+  .btn-outlined:focus,
+  .btn-outlined.active {
+    background: red;
+    color: #ffffff;
+    border-color: red;
+    
+  }
+  .button_fish_flex
+  {
+    display: flex;
+    justify-content: space-between;
+  }
+  .update_head
+  {
+      display: flex;
+      justify-content: center;
+  }

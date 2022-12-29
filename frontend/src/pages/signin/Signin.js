@@ -32,7 +32,12 @@ const Signin = () => {
                 if(response.status==200){
                     localStorage.setItem('token',response.data.token);
                     localStorage.setItem('type',response.data.type);
-                    window.location.href='/'
+                    if(localStorage.getItem('type')==0){
+                      window.location.href='/FishermanLanding'
+                    }
+                    else if(localStorage.getItem('type')==1){
+                      window.location.href='/userlanding'
+                    }
                 }
                 console.log(response)
                 
