@@ -1,8 +1,10 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import axios from'axios';
+import { useParams } from 'react-router'
 
-export default function Product() {
+export default function Updateproducts() {
         const baseurl = 'http://127.0.0.1:8000'
+        let {id} = useParams();
 
     const [logdata,setData] = useState({
         name:'',
@@ -25,7 +27,12 @@ export default function Product() {
         })
     }
 
-    async function Token(){
+
+    useEffect(()=>{
+        fetchData();
+        console.log(logdata)
+    },[]);
+    async function fetchData(){
         try {
                 if (localStorage.getItem('token') === null) {
                   window.location.href = '/signin'
@@ -35,16 +42,11 @@ export default function Product() {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                   }
                 }
-            await axios.post(`${baseurl}/products`,{
-                name:logdata.name,
-                description:logdata.description,
-                cost:logdata.cost,
-                qty:logdata.qty,
-                contact:logdata.contact,
-                location:logdata.location
-            },config).then((response)=>{
+            await axios.get(`${baseurl}/products/${id}`,config).then((response)=>{
                 if(response.status==200){
-                    window.location.href = '/FishermanLanding'
+                    console.log(response.data)
+                    setData(response.data)
+
                 }
                 else{
                     console.log(response.data)
@@ -54,11 +56,51 @@ export default function Product() {
             console.log(error)
         }
     }
+
+
+    async function updateproduct(){
+        try {
+            if (localStorage.getItem('token') === null) {
+              window.location.href = '/signin'
+            }
+            const config = {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+              }
+            }
+        await axios.put(`${baseurl}/products/${id}`,{
+            name:logdata.name,
+            description:logdata.description,
+            cost:logdata.cost,
+            qty:logdata.qty,
+            contact:logdata.contact,
+            location:logdata.location
+        },config).then((response)=>{
+            if(response.status==200){
+                console.log(response.data)
+                window.location.href='/FishermanLanding'
+
+            }
+            else{
+                console.log(response.data)
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
+    }
+
+
+
+
+
+
+
     return (
         <div>
             <div className="login-signup l-attop" id="signup">
                 <div className="login-signup-title">
-                    Product
+                    Update Product
                 </div>
                 <div className="login-signup-content">
                     <div className="input-name">
@@ -96,7 +138,8 @@ export default function Product() {
                     <input type="text" onChange={addData} name="location" value={logdata.location} className="field-input" />
 
                     <button className="submit-btn" onClick={() => {
-                        Token()
+                        console.log(logdata)
+                        updateproduct();
                     }}>
                         Enter
                     </button>

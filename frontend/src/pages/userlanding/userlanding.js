@@ -55,6 +55,7 @@ const Userlanding = () => {
             name={d.name}
             description={d.description}
             contact={d.contact}
+            location={d.location}
             time={d.time}
             cost= {d.cost}/>)
                 })
