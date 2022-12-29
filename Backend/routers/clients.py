@@ -60,7 +60,17 @@ async def search_auto(query: str, user: dict = Depends(get_current_user), db: Se
     products = db.query(models.Products).all()
     items = []
     for item in products:
-        tempp_item = item.id, item.name, item.description, item.cost, item.qty, item.time, item.contact, item.location, item.owner_id
+        tempp_item = {
+            "id": item.id, 
+            "name": item.name,
+            "description": item.description,
+            "cost": item.cost,
+            "qty": item.qty,
+            "time": item.time,
+            "contact": item.contact,
+            "location": item.location,
+            "owner_id": item.owner_id
+        }
         items.append(tempp_item)
 
     req_items = []
