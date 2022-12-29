@@ -42,11 +42,26 @@ class Product(BaseModel):
     contact: str
     location: str
 
-
+class FilterProduct(BaseModel):
+    name: Optional[str]
+    cost: Optional[int] = Field(ge=1)
+    qty: Optional[int] = Field(ge=0)
+    location: Optional[str]
 
 @router.get('/')
 async def read_all_products(db: Session = Depends(get_db)):
     return db.query(models.Products).all()
+
+
+@router.get('/filter')
+async def read_filtered_products(product: FilterProduct ,db: Session = Depends(get_db)):
+    return db.query(models.Products)\
+        .filter(models.Products.name == product.name).all()
+            # .filter(models.Products.cost <= product.cost)\
+            #     .filter(models.Products.qty >= product.qty)\
+                    # .filter(models.Products.location == product.location)\
+                    #     .all()
+
 
 
 @router.get('/user')
