@@ -19,6 +19,10 @@
   }
 
   /***********************CARD CSS ************/
+
+  .buynowbtn{
+    width: 40px;
+  }
   .product-card {
     width: 380px;
     position: relative;
