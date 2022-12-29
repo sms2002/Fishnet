@@ -29,7 +29,7 @@ router = APIRouter(
 SECRET_KEY = "4ac42adc-8ab6-4610-a5be-e832ffce714c"
 ALGORIHTM = "HS256"
 
-outh2_bearer = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_bearer = OAuth2PasswordBearer(tokenUrl="token")
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -95,7 +95,8 @@ async def login(login_user: LoginUser, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="validation failure")
     token = create_access_token(user.username, user.id, user.type, expires_delta=timedelta(minutes=30))
     return {
-        'token': token
+        'token': token,
+        'type': user.type
     }
 
 @router.post('/create/user')
@@ -132,7 +133,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     }
 
 
-async def get_current_user(token: str = Depends(outh2_bearer)):
+async def get_current_user(token: str = Depends(oauth2_bearer)):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORIHTM])
         username: str = payload.get("sub")
