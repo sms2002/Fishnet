@@ -54,7 +54,7 @@ async def predict_family(request: predictRequest):
     temp_list = df1.to_numpy().tolist()
     list1 = []
     for x in temp_list:
-        list2 = x[0], x[1], f"{x[3]} - {x[4]}", f"{x[6]} - {x[7]}", f"{x[9]} - {x[10]}", x[11], x[12]
+        list2 = x[0], f"{x[3]} - {x[4]}", f"{x[6]} - {x[7]}", f"{x[9]} - {x[10]}", x[11], x[12]
         list1.append(list2)
 
     return output, list1
