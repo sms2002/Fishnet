@@ -9,11 +9,26 @@ const baseurl = 'http://127.0.0.1:8000'
 const Userlanding = () => {
 
     const [data,setData] = useState([])
-    const [search,setSearch]=useState('')
+    const [logdata,setSearch]=useState({
+        search:''
+    })
+
+    const addData = (e)=>{
+        // console.log(e.target);
+        const {name,value} = e.target;
+        setSearch(()=>{
+            return{
+                ...logdata,
+                [name]:value
+            }
+                
+        })
+        console.log(data)
+    }
 
     useEffect(()=>{
         fetchData();
-    },[])
+    },[1])
 
     async function fetchData(){
         try {
@@ -22,7 +37,6 @@ const Userlanding = () => {
             }
             else{
                 await axios.get(`${baseurl}/client`).then((response)=>{
-                    console.log(response.data)
                     if(response.status==200){
                         setData(response.data)
                     }
@@ -34,6 +48,23 @@ const Userlanding = () => {
         }
     }
 
+    async function searchproduct(){
+        try {
+            const config = {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+              }
+            let str1 = logdata.search
+            await axios.get(`${baseurl}/client/search/${str1.toLowerCase()}`,config).then(response=>{
+                console.log(response)
+                setData(response.data)
+            })
+            
+        } catch (error) {
+            
+        }
+    }
 
 
   return (
@@ -43,9 +74,9 @@ const Userlanding = () => {
 		<ion-icon name="location-outline"></ion-icon>
 	</div>
 
-	<input type="text" placeholder="Enter element to search"/>
+	<input type="text" placeholder="Enter element to search" name='search' value={logdata.search} onChange={addData}/>
 	<button>
-		<a href="/">Search</a>
+		<a onClick={()=>{searchproduct()}}>Search</a>
 		<ion-icon name="search-outline" class="search-icon"></ion-icon>
 	</button>
         </div>
@@ -53,11 +84,13 @@ const Userlanding = () => {
             {
                 data.map(d=>{
                     return(<Card 
+                        id = {d.id}
             name={d.name}
             description={d.description}
             contact={d.contact}
             location={d.location}
-            time={d.time}
+            quantity={d.qty}
+            time={d.time.slice(0,16)}
             cost= {d.cost}/>)
                 })
             }

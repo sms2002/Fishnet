@@ -26,7 +26,7 @@ export default function FishermanCard(props) {
 	return (
 		<div>
 			<div class="product-card">
-				<div class="badge">Hot</div>
+				<div class="badge">Fresh</div>
 				<div class="product-tumb">
 					<img src="https://cdn.pixabay.com/photo/2021/04/19/21/44/mackerel-6192529_1280.png" alt="" />
 				</div>

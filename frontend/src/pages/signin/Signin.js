@@ -68,7 +68,7 @@ const Signin = () => {
       <h2>Password</h2>
 
     </div>
-    <input type="text" name="password" onChange={addData} value={logdata.password} className="field-input" />
+    <input type="password" name="password" onChange={addData} value={logdata.password} className="field-input" />
     <div className="input-r">
 
 

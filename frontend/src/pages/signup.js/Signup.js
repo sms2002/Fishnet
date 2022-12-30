@@ -71,7 +71,7 @@ const Signup = () => {
       <h2>E-Mail</h2>
 
     </div>
-    <input type="text" onChange={addData} name="email" value={logdata.email} className="field-input" />
+    <input type="email" onChange={addData} name="email" value={logdata.email} className="field-input" />
 
     <div className="input-name input-margin">
       <h2>First Name</h2>
@@ -89,7 +89,7 @@ const Signup = () => {
       <h2>Password</h2>
 
     </div>
-    <input type="text" onChange={addData} name="password" value={logdata.password} className="field-input" />
+    <input type="password" onChange={addData} name="password" value={logdata.password} className="field-input" />
     <div className='flex_radio'>
     <span><label for="html">Fisherman</label>
     <input className='radiobtn' type="radio" id="type" name="fav_language" onChange={()=>{

@@ -132,3 +132,9 @@
 .buynowbtn:hover{
     background-color: #BFEAF5;
 }
+
+.qtyinput{
+    width: 40px;
+    height: 30px;
+    align-items: center;
+}

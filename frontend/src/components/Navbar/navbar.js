@@ -12,7 +12,7 @@ const Navbar = () => {
             <h1 className='nav-text'>FISHNET</h1>
             <div className='button_flex'>
             <button className="button style_1"onClick={() => { window.location.href = '/predict'; }}>Predict</button>
-            <button class="button style_1"  onClick={() => { localStorage.removeItem('token'); window.location.reload(); }}>
+            <button class="button style_1"  onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('type'); window.location.href='/signin'; }}>
               Logout
             </button>
             </div>

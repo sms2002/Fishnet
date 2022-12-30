@@ -12,11 +12,11 @@ const Family = (props) => {
                     return(
                         <Speciescard 
                         name={d[0]}
-                        temp = {d[2]}
-                        ph={d[3]}
-                        dh={d[4]}
-                        size={d[5]}
-                        breeding={d[6]}
+                        temp = {d[1]}
+                        ph={d[2]}
+                        dh={d[3]}
+                        size={d[4]}
+                        breeding={d[5]}
                     />
                     )
                     

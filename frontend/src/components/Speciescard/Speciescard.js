@@ -7,6 +7,7 @@ const Speciescard = (props) => {
       <div id="mainbox">
 <div class="card">
   <h1>{props.name}</h1>
+  <h3>Temp: {props.temp}</h3>
   <h3>pH: {props.ph}</h3>
   <h3>dH: {props.dh}</h3>
   <h3>size: {props.size}</h3>
