@@ -24,6 +24,7 @@ on a particular post the fish or any by-products is directly supplied to the end
 The end users can be restaurants or local consumers. This enables fishermen to get a
 greater share for their hard work and end users to receive the products at cheaper price
 compared to when buying from local agents.
+There is also a feature that allows the users to view the nutritional information of a specific fish species.
 <br /><br />
 
 ## ASSUMPTIONS
@@ -36,6 +37,8 @@ We assume that the end user, hoping to predict the suitable classes of fishes, h
 Backend - FastAPI, Python 
 
 Frontend - React, HTML, CSS, JS
+
+Database - Sqlite
 <br /><br />
 
 ## REFERENCES
