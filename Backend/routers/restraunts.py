@@ -2,6 +2,7 @@ import sys
 sys.path.append("..")
 
 import pandas as pd
+import json
 
 from fastapi import FastAPI, Depends, HTTPException, status, APIRouter
 from pydantic import BaseModel, Field
@@ -43,9 +44,7 @@ class bulkRequest(BaseModel):
 
 
 @router.get('/bulkOrder')
-async def get_items(name: str, qty: int, user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
-    if user is None:
-        raise get_user_exception()  
+async def get_items(name: str, qty: int, db: Session = Depends(get_db)):
 
     name_filter = db.query(models.Products).filter(models.Products.name == name).all()
     
@@ -122,7 +121,7 @@ async def get_items(name: str, qty: int, user: dict = Depends(get_current_user),
     # x=dfnotify["notified_ownerid"][0]
     # return x
 
-    return ""
+    return json_index
 
 # @router.get('/user')
 # async def read_all_products_by_user(user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
