@@ -84,9 +84,10 @@
 }
 
 .product-price {
-    font-size: 18px;
-    color: #fbb72c;
-    font-weight: 600;
+    display: flex;
+    font-size: 25px;
+    color: darkblue;
+    font-weight: 800;
 }
 
 .product-price small {
