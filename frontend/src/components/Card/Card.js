@@ -49,7 +49,7 @@ export default function Card(props) {
  	<div class="product-card">
 		<div class="badge">Fresh</div>
 		<div class="product-tumb">
-			<img src="https://cdn.pixabay.com/photo/2021/04/19/21/44/mackerel-6192529_1280.png" alt=""/>
+			<img src={props.img} alt=""/>
 		</div>
 		<div class="product-details">
 			<a onClick={()=>{window.location.href=`/nutrients/${props.name}`}}><h4 className='card-title'>{props.name}</h4></a>

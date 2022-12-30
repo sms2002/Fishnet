@@ -5,6 +5,13 @@ import FishermanCard from '../../components/FishermanCard/FishermanCard';
 
 const baseurl = 'http://127.0.0.1:8000'
 
+let pic = [
+    "https://cdn.pixabay.com/photo/2021/04/19/21/44/mackerel-6192529_1280.png",
+    "http://4.bp.blogspot.com/-TK7OOd3SljY/Tum7WWfH6oI/AAAAAAAAFsY/Ev390ZyUsf8/s1920/fish_hd_wallpaper-7.jpg",
+    "https://4.bp.blogspot.com/-YRiO6SqoLZQ/UolAjC-GliI/AAAAAAAAD10/pz8KL2ezKFQ/s1600/Tropical_Fish_4.jpg",
+    "http://2.bp.blogspot.com/_W90V87w3sr8/TRITDupmFWI/AAAAAAAAAeg/vZYB-OOf1r0/s1600/Angel_fish_white.jpg"
+]
+
 const FishermanLanding = () => {
 
     const [data,setData] = useState([])
@@ -46,7 +53,8 @@ const FishermanLanding = () => {
             {
             data.map(d=>{
                 return(
-                    <FishermanCard 
+                    <FishermanCard
+                    img = {pic[d.id%4]} 
                     id = {d.id}
                     name={d.name}
                     description={d.description}
