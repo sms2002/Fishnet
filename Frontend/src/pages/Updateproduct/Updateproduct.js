@@ -1,6 +1,6 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState,useParams} from 'react'
 import axios from'axios';
-import { useParams } from 'react-router'
+import {  } from 'react-router'
 
 export default function Updateproducts() {
         const baseurl = 'http://127.0.0.1:8000'
